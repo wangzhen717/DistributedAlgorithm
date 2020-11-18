@@ -1,4 +1,4 @@
-package distributedAlgorithm.exercuse2a.Peterson;
+package distributedAlgorithm.exercise2a.Peterson;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -41,7 +41,7 @@ public class Processor extends UnicastRemoteObject implements ProcessorRMI, Runn
                     throw new IllegalStateException("Unexpected value: " + infoType);
             }
             downstream.infoChange(infoType,info);
-            System.out.println("send "+infoType+" to"+downstreamId);
+            System.out.println(id+"send "+infoType+" to"+downstreamId);
         } catch (NotBoundException e) {
             e.printStackTrace();
         }
@@ -52,7 +52,7 @@ public class Processor extends UnicastRemoteObject implements ProcessorRMI, Runn
         try {
             ProcessorRMI upstream = (ProcessorRMI) registry.lookup(upstreamId);
             upstream.send(id+"","ntid");
-            System.out.println("receive ntid from "+upstreamId);
+            System.out.println(id+"receive ntid from "+upstreamId);
         } catch (NotBoundException e) {
             e.printStackTrace();
         }
@@ -132,7 +132,7 @@ public class Processor extends UnicastRemoteObject implements ProcessorRMI, Runn
                 peterson();
                 updateNeighbourInfo();
                 if (upstreamId == id) {
-                    System.out.println(id+" is elected");
+                    System.out.println(tid+" is elected");
                     System.exit(0);
                 }
             }

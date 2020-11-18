@@ -1,4 +1,4 @@
-package distributedAlgorithm.exercuse2a.Peterson;
+package distributedAlgorithm.exercise2a.Peterson;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
